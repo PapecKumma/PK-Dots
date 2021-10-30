@@ -28,6 +28,8 @@ budgie-panel &
 budgie-polkit-dialog &
 ### Wallpaper Setup
 feh --bg-fill /home/ghome/Pictures/Wallpapers/pro.jpeg &
+bspc desktop -f Music &
+spotify &
 
 #################
 #    BSPWM Config   #
@@ -78,3 +80,4 @@ bspc rule -a steam desktop='Gaming' follow=off &
 bspc rule -a Org.gnome.Nautilus state=floating
 bspc rule -a Gcolor3 state=floating
 bspc rule -a Gnome-control-center state=floating
+bspc rule -a cava state=floating desktop='Music' rectangle=1500x150+1500+800
