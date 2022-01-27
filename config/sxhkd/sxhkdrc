@@ -1,0 +1,162 @@
+# To spawn the terminal
+super + Return
+  kitty
+
+# make sxhkd reload its configuration files:
+alt + Escape
+    pkill -USR1 -x sxhkd
+
+#Rofi
+  
+super + space  
+  krunner
+#XF86AudioMute
+#bash /home/ghome/Apps/Google_Rofi/bash.sh
+  
+super + s
+  spectacle
+  
+super + shift + s
+  spectacle -r --background
+
+@Print
+  spectacle -n -f -b
+
+alt + space
+  rofi -show window
+
+#alt+tab
+alt + Tab
+  bspc node -f last
+alt + shift + Tab
+  bspc node -f next
+#Quit BSPWM
+shift + super + q
+  bspc quit
+
+#Restart BSPWM
+super + shift + r
+  bspc wm -r
+
+#Reload Key Binding
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#Detach Window
+super + f
+  bspc node -t floating
+super + shift + f
+  bspc node -t fullscreen
+#Attach Window
+super + t
+  bspc node -t tiled
+
+#Move window to Desktop
+super + shift + 1
+  bspc node -d Terminal
+super + 1
+  bspc desktop -f Terminal
+
+super + shift + 2
+  bspc node -d Browsing
+super + 2
+  bspc desktop -f Browsing
+
+super + shift + 3
+  bspc node -d Music
+super + 3
+  bspc desktop -f Music
+
+super + shift + 4
+  bspc node -d Gaming
+super + 4
+  bspc desktop -f Gaming
+
+super + shift + b
+  bspc node -d Content
+super + b
+  bspc desktop -f Content
+
+super + shift + n
+  bspc node -d Sound
+super + n
+  bspc desktop -f Sound
+
+super + shift + m
+  bspc node -d Other
+super + m
+  bspc desktop -f Other
+
+super + shift + l
+  bspc node -d Another
+super + l
+  bspc desktop -f Another
+  
+#Close Window
+ctrl + shift + q
+  bspc  node -c
+#Kill Window
+super + k
+  bspc  node -k
+# Volume control
+XF86Audio{RaiseVolume,LowerVolume}
+	pactl -- set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
+    
+# Change Window Size
+super + {Left,Down,Up,Right}
+	bspc node -z {left -50 0,bottom 0 50,top 0 -50,right 50 0}
+
+super + shift + {Left,Down,Up,Right}
+	bspc node -z {right -50 0,top 0 50,bottom 0 -50,left 50 0}
+    
+super + button4
+  bspc node -z left -20 0
+super + button5
+  bspc node -z right 20 0
+  
+super + shift + button4
+  bspc node -z right -20 0
+super + shift + button5
+  bspc node -z left 20 0
+super + q
+  bspc node --flag hidden=on
+super + y
+  bspc node --flag hidden=off
+# Toggle Raven
+@super + s
+  skippy-xd -S
+# dbus-send --session --type=method_call --dest=org.budgie_desktop.Raven /org/budgie_desktop/Raven org.budgie_desktop.Raven.SetExpanded boolean:'true'
+#super + Tab + shift
+# dbus-send --session --type=method_call --dest=org.budgie_desktop.Raven /org/budgie_desktop/Raven org.budgie_desktop.Raven.SetExpanded boolean:'false'
+
+@super + button8
+  bspc desktop -f prev
+@super + button9
+  bspc desktop -f next
+@super + shift + button8
+  bspc node -d prev
+@super + shift + button9
+  bspc node -d next
+@super + p
+  bash /home/ghome/.config/bspwm/panel.sh
+@super + shift + p
+  bash /home/ghome/.config/bspwm/panel1.sh
+@super + shift + k
+  bspc config focus_follows_pointer true 
+@super + shift + j
+  bspc config focus_follows_pointer false 
+@super + i
+  bspc node focused --layer above
+
+@super + slash
+  bspc node -n last
+
+Print
+  scrot $HOME/'Pictures/Screenshots/%Y-%m-%d_%H%M%S-$wx$h_scrot.png' -e 'xclip -selection clipboard -target image/png -i $f'
+@super + shift + s
+  scrot -z -s $HOME/'Pictures/Screenshots/%Y-%m-%d_%H%M%S-$wx$h_scrot.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+@super + l
+  pactl load-module module-loopback latency_msec=1
+@super + shift + l 
+  pactl unload-module module-loopback
